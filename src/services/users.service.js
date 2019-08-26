@@ -10,7 +10,7 @@ const getUsers = () => query('SELECT * FROM users');
 
 const getUser = (id) => query(`SELECT * FROM users WHERE id = ${id}`);
 
-const postUser = (user, team_name) => query('INSERT INTO users(team_name, name) VALUES($1,$2)',[`${team_name}`,`${user}`])
+const postUser = (user, team_name, id) => query('INSERT INTO users(team_name, name, id) VALUES($1,$2,$3)',[`${team_name}`,`${user}`, `${id}`])
     
     // await client.query('SELECT * FROM users', (err, res) => {
     //   console.log(err, res)

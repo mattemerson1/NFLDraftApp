@@ -24,15 +24,16 @@ const getUser = async function(req, res) {
 
 const postUser = async function (req, res) {
     try {
-        const user = "matt";
-        const team_name = "matts teams";
-        console.log("===================users controller================")
+        const user = req.body.user;
+        const team_name = req.body.team_name;
+        console.log("===================users controller================");
+        console.log(user);
+        console.log(team_name);
         // const team_name = req.body;
         await userService.postUser(user, team_name);
         res.status(201).send();
     } catch(err) {
-        res.status(500
-        ).send(err.message);
+        res.status(500).send(err.message);
     }
 };
 
