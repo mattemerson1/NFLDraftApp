@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const routes = require('./routes')
+const bodyParser = require('body-parser');
+// const { Client } = require('pg');
 
 
 // const client = new Client({
@@ -23,15 +25,15 @@ const routes = require('./routes')
     //     client.end()
     //   })
     
-    //   client.query('INSERT INTO users(team_name, name) VALUES($1,$2)',['abcde fc','craig'] , (err, res) => {
-        //     console.log(err, res)
-        //     client.end()
-        //   })
+// client.query('INSERT INTO users(team_name, name) VALUES($1,$2)',['Matt team','Matt'] , (err, res) => {
+//     console.log(err, res)
+//     client.end()
+// })
         
         // app.get('/', function (req, res) {
             //     res.send('Hello World')
             //   })
-            
+app.use(bodyParser.json());
 app.use('/api/v1', routes)
 app.listen(3000)
 

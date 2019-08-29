@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mattemerson1/NFLDraftApp#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "request": "^2.88.0"
   }
 }

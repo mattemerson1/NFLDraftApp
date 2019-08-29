@@ -6,14 +6,14 @@ const router = express.Router();
 router.get('/', userController.getUsers);
     // .post(userController.postUsers)
 
-router.route('/')
-    .post(userController.postUser);
+// router.route('/')
+//     .post(userController.postUser);
 
 router.route('/:id')
-    .get(userController.getUser);
-    // .post(userController.postUser);
-//     .delete(userController.deleteUser)
-//     .put(userController.putUser)
+    .get(userController.getUser)
+    .post(userController.postUser)
+    .delete(userController.deleteUser)
+    // .put(userController.putUser)
 
 module.exports = router;
 

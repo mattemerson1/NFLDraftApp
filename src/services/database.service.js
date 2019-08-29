@@ -13,5 +13,5 @@ const client = new Client({
 const query = q => client.query(q); 
 
 module.exports = {
-    query
+    query,
 }

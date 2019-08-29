@@ -24,12 +24,7 @@ const getUser = async function(req, res) {
 
 const postUser = async function (req, res) {
     try {
-        const user = req.body.user;
-        const team_name = req.body.team_name;
-        console.log("===================users controller================");
-        console.log(user);
-        console.log(team_name);
-        // const team_name = req.body;
+        const { user, team_name } = req.body;
         await userService.postUser(user, team_name);
         res.status(201).send();
     } catch(err) {
@@ -37,17 +32,23 @@ const postUser = async function (req, res) {
     }
 };
 
-// const removeUser = async function (req, res) {
-//     try {
-//         res.status(200).send(await userService.removeUser());
-//     } catch(err) {
-//         res.status(err.statuscode).send(err.message);
-//     }
-// };
+const deleteUser = async function (req, res) {
+    try {
+        const id = req.params.id;
+        await userService.deleteUser(id);
+        res.status(204).send();
+    } catch(err) {
+        res.status(500).send(err.message);
+    }
+};
 
 // const putUser = async function (req, res) {
 //     try {
-//         res.status(200).send(await userService.putUser());
+//         const id = req.params.id;
+//         const user = req.body;
+//         delete user.id;
+//         await userService.putUser(id, user);
+//         res.status(204).send();
 //     } catch(err) {
 //         res.status(err.statuscode).send(err.message);
 //     }
@@ -57,7 +58,7 @@ module.exports = {
     getUser,
     getUsers,
     postUser,
-    // removeUser,
+    deleteUser
     // putUser
 }
 
