@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import ClickyButtonState from './clicky-button-state'
 import ClickyButtonProps from './clicky-button-props'
+import Users from './components/users'
 import { origin } from './config'
 
 
@@ -18,7 +19,6 @@ function App() {
     async function fetchRosters() {
       try {
         const response = await axios.get(`${origin}/api/v1/rosters`);
-        console.log(response, "rosters")
         setTeams(response.data.rows[0].team_name)
       } catch(err) {
         console.error(err) 
@@ -27,7 +27,6 @@ function App() {
     async function fetchUsers() {
       try {
         const response = await axios.get(`${origin}/api/v1/users`);
-        console.log(response, "users")        
         setUsers(response.data.rows[0].user_name)
       } catch(err) {
         console.error(err)
@@ -51,10 +50,11 @@ function App() {
 
   return (
     <div className="App">
-        {users}
-        {teams}
-        {teamPanel}
-        {userPanel}
+        {/* {users} */}
+        {/* {teams} */}
+        {/* {teamPanel} */}
+        {/* {userPanel} */}
+        <Users />
         <ClickyButtonState />
         <ClickyButtonProps setButtonClicks={setButtonClicks} buttonClicks={buttonClicks} />
         {buttonClicks}
