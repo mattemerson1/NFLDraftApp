@@ -4,7 +4,6 @@ import axios from 'axios';
 import './App.css';
 import ClickyButtonState from './clicky-button-state'
 import ClickyButtonProps from './clicky-button-props'
-import MainAppScreen from './components/main-screen'
 import { origin } from './config'
 
 
