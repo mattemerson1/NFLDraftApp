@@ -5,6 +5,8 @@ import './App.css';
 import ClickyButtonState from './clicky-button-state'
 import ClickyButtonProps from './clicky-button-props'
 import Users from './components/users'
+import Roster from './components/roster'
+import RosterPlayers from './components/rosterPlayers'
 import { origin } from './config'
 
 
@@ -12,6 +14,7 @@ function App() {
   const [teams, setTeams] = useState("");
   const [users, setUsers] = useState("");
   const [buttonClicks, setButtonClicks] = useState(0);
+  const [rosterId, setRosterId] = useState();
   
 
 
@@ -36,6 +39,11 @@ function App() {
     fetchRosters()
   });
 
+
+  const handlePress = (rosterId) => {
+    setRosterId(rosterId)
+  }
+
   const teamPanel = teams ?
   (<div className="team-names">
     {teams}
@@ -48,16 +56,19 @@ function App() {
     </div>)
     : null
 
+  
+
   return (
     <div className="App">
-        {/* {users} */}
-        {/* {teams} */}
-        {/* {teamPanel} */}
-        {/* {userPanel} */}
-        <Users />
-        <ClickyButtonState />
-        <ClickyButtonProps setButtonClicks={setButtonClicks} buttonClicks={buttonClicks} />
-        {buttonClicks}
+        {/* <Roster rosterId={2} /> */}
+        {/* <Users handlePress={handlePress} /> */}
+        {rosterId ? <Roster rosterId={rosterId} /> : <Users handlePress={handlePress} />}
+        {/* <Roster /> */}
+        <RosterPlayers rosterId={2} />
+        {/* <ClickyButtonState /> */}
+        {/* <ClickyButtonProps setButtonClicks={setButtonClicks} buttonClicks={buttonClicks} /> */}
+        {/* {buttonClicks} */}
+
     </div>
   );
 }

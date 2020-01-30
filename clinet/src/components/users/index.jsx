@@ -3,14 +3,13 @@ import axios from 'axios';
 import { origin } from '../../config'
 
 
-const Users = () => {
+const Users = ({handlePress}) => {
     const [users, setUsers] = useState([]);
     
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const response = await axios.get(`${origin}/api/v1/users`);
-                console.log(response.data.rows)
                 setUsers(response.data.rows)
             } catch(err) {
                 console.error(err)
@@ -18,7 +17,7 @@ const Users = () => {
         }
         fetchUsers()
     }, []);
-    return users.map(({ user_name }) => <h1>{user_name}</h1>)
+    return users.map(({ user_name, roster_id }) => <button  onClick={() => handlePress(roster_id)} >{user_name}</button>)
 
 }
 
