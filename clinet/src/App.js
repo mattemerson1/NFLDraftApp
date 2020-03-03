@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
@@ -7,68 +8,35 @@ import ClickyButtonProps from './clicky-button-props'
 import Users from './components/users'
 import Roster from './components/roster'
 import RosterPlayers from './components/rosterPlayers'
+import Players from './components/players'
 import { origin } from './config'
+import Button from 'react-bootstrap/Button'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 
 function App() {
-  const [teams, setTeams] = useState("");
-  const [users, setUsers] = useState("");
-  const [buttonClicks, setButtonClicks] = useState(0);
   const [rosterId, setRosterId] = useState();
+  const [state, setState] = useState("users");
   
-
-
-  useEffect(() => {
-    async function fetchRosters() {
-      try {
-        const response = await axios.get(`${origin}/api/v1/rosters`);
-        setTeams(response.data.rows[0].team_name)
-      } catch(err) {
-        console.error(err) 
-      }
-    }
-    async function fetchUsers() {
-      try {
-        const response = await axios.get(`${origin}/api/v1/users`);
-        setUsers(response.data.rows[0].user_name)
-      } catch(err) {
-        console.error(err)
-      }
-    }
-    fetchUsers()
-    fetchRosters()
-  });
 
 
   const handlePress = (rosterId) => {
     setRosterId(rosterId)
   }
-
-  const teamPanel = teams ?
-  (<div className="team-names">
-    {teams}
-    </div>)
-    : null
-
-  const userPanel = users ?
-  (<div className="user-names">
-    {users}
-    </div>)
-    : null
-
   
 
   return (
     <div className="App">
-        {/* <Roster rosterId={2} /> */}
-        {/* <Users handlePress={handlePress} /> */}
-        {rosterId ? <Roster rosterId={rosterId} /> : <Users handlePress={handlePress} />}
-        {/* <Roster /> */}
-        <RosterPlayers rosterId={2} />
-        {/* <ClickyButtonState /> */}
-        {/* <ClickyButtonProps setButtonClicks={setButtonClicks} buttonClicks={buttonClicks} /> */}
-        {/* {buttonClicks} */}
-
+      {/* NAVIGATION BAR */}
+      <Button onClick={() => setState("users")}>users</Button>
+      <Button onClick={() => setState("rosters")}>rosters</Button>
+      <Button onClick={() => setState("players")}>players</Button>
+      {/* NAVIGATION BAR */}
+      {state === 'users' ? <Users handlePress={handlePress} /> : null}
+      {state === 'rosters' ? <Roster rosterId={rosterId} /> : null}
+      {state === 'players' ? <Players /> : null}
+      {/* {rosterId ? <Roster rosterId={rosterId} /> : <Users handlePress={handlePress} />} */}
+      {/* {rosterId ? <RosterPlayers rosterId={rosterId} /> : null} */}
     </div>
   );
 }
