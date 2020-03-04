@@ -17,7 +17,9 @@ const  RosterPlayers = ({rosterId}) => {
         }
         fetchRosterPlayers()
     }, []);
-    return rosterPlayers.map(({ roster_id, player_id }) => <h1>{roster_id} {player_id}</h1>)
+    return rosterPlayers.map(({ roster_id, player_id }) => <h1>{roster_id} {player_id} </h1>)
 }
 
 export default RosterPlayers
+
+// Dont think this component is being used at all

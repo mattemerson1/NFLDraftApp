@@ -3,10 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
-import ClickyButtonState from './clicky-button-state'
-import ClickyButtonProps from './clicky-button-props'
 import Users from './components/users'
 import Roster from './components/roster'
+import NavigationBar from './components/navigationBar'
 import RosterPlayers from './components/rosterPlayers'
 import Players from './components/players'
 import { origin } from './config'
@@ -23,14 +22,16 @@ function App() {
   const handlePress = (rosterId) => {
     setRosterId(rosterId)
   }
+
+  const handleState = (state) => {
+    setState(state)
+  }
   
 
   return (
     <div className="App">
       {/* NAVIGATION BAR */}
-      <Button onClick={() => setState("users")}>users</Button>
-      <Button onClick={() => setState("rosters")}>rosters</Button>
-      <Button onClick={() => setState("players")}>players</Button>
+      <NavigationBar handleState={handleState}/>
       {/* NAVIGATION BAR */}
       {state === 'users' ? <Users handlePress={handlePress} /> : null}
       {state === 'rosters' ? <Roster rosterId={rosterId} /> : null}

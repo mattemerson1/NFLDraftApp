@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { DropdownButton } from 'react-bootstrap';
 import axios from 'axios';
 import { origin } from '../../config'
-import DropdownItem from 'react-bootstrap/DropdownItem';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -14,6 +14,7 @@ const Users = ({handlePress}) => {
             try {
                 const response = await axios.get(`${origin}/api/v1/users`);
                 setUsers(response.data.rows)
+                console.log(response.data.rows)
             } catch(err) {
                 console.error(err)
             }
@@ -21,13 +22,9 @@ const Users = ({handlePress}) => {
         fetchUsers()
     }, []);
     
-    return <DropdownButton id="dropdown-basic-button" title="Users">
-        {users.map(({ user_name, roster_id }) => <DropdownItem onClick={() => handlePress(roster_id)}>{user_name}</DropdownItem>)}
-        <DropdownItem href="#/action-2"> Create User</DropdownItem>
-
-
-    </DropdownButton>
-
+    return  <ButtonToolbar>
+                {users.map(({ user_name, roster_id }) => <Button onClick={() => handlePress(roster_id)} size="lg" variant="primary">{user_name}</Button>)}
+        </ButtonToolbar> 
 }
 
 export default Users
