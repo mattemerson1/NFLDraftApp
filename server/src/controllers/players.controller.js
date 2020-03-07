@@ -3,7 +3,8 @@ const playersService = require('../services/players.service');
 const getPlayers = async function(req, res) {
     try {
         const fields = req._parsedUrl.query
-        res.status(200).send(await playersService.getPlayers(fields));
+        const players = await playersService.getPlayers(fields);
+        res.status(200).send(players);
     } catch(err) {
         res.status(err.statuscode).send(err.message);
     }
