@@ -9,6 +9,7 @@ import NavigationBar from './components/navigationBar'
 import RosterPlayers from './components/rosterPlayers'
 import Players from './components/players'
 import CreateRoster from './components/createRoster'
+import RemoveRoster from './components/deleteRoster'
 import { origin } from './config'
 import Button from 'react-bootstrap/Button'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
@@ -38,6 +39,7 @@ function App() {
       {state === 'rosters' ? <Roster rosterId={rosterId} /> : null}
       {state === 'players' ? <Players /> : null}
       {state === 'createRoster' ? <CreateRoster /> : null}
+      {state === 'removeRoster' ? <RemoveRoster /> : null}
       {/* {rosterId ? <Roster rosterId={rosterId} /> : <Users handlePress={handlePress} />} */}
       {/* {rosterId ? <RosterPlayers rosterId={rosterId} /> : null} */}
     </div>
