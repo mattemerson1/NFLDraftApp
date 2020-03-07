@@ -25,6 +25,7 @@ const Roster = ({rosterId}) => {
                 console.log(err)
             }
         }
+
         fetchRoster()
         fetchRosterPlayers()
     }, [rosterId]);

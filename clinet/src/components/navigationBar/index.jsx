@@ -18,6 +18,7 @@ const navigationBar = ({handleState}) => {
             <Nav.Link onClick={() => handleState("users")}>Users</Nav.Link>
             <Nav.Link onClick={() => handleState("rosters")}>Rosters</Nav.Link>
             <Nav.Link onClick={() => handleState("players")}>Players</Nav.Link>
+            <Nav.Link onClick={() => handleState("createRoster")} > Create roster </Nav.Link>
         </Nav>
         <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

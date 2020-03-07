@@ -8,6 +8,7 @@ import Roster from './components/roster'
 import NavigationBar from './components/navigationBar'
 import RosterPlayers from './components/rosterPlayers'
 import Players from './components/players'
+import CreateRoster from './components/createRoster'
 import { origin } from './config'
 import Button from 'react-bootstrap/Button'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
@@ -36,6 +37,7 @@ function App() {
       {state === 'users' ? <Users handlePress={handlePress} /> : null}
       {state === 'rosters' ? <Roster rosterId={rosterId} /> : null}
       {state === 'players' ? <Players /> : null}
+      {state === 'createRoster' ? <CreateRoster /> : null}
       {/* {rosterId ? <Roster rosterId={rosterId} /> : <Users handlePress={handlePress} />} */}
       {/* {rosterId ? <RosterPlayers rosterId={rosterId} /> : null} */}
     </div>
